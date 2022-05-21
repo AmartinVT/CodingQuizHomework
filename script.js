@@ -1,5 +1,11 @@
 var startEl = document.querySelector("#Start");
 var timerEl = document.querySelector("#Countdown");
+var introEl = document.querySelector("#Intro");
+var q1El = document.querySelector("#Q1");
+var q2El = document.querySelector("#Q2");
+var q3El = document.querySelector("#Q3");
+var q4El = document.querySelector("#Q4");
+var q5El = document.querySelector("#Q5");
 
 function startQuiz() {
     console.log("Quiz Initiated")
@@ -14,8 +20,13 @@ function consoleReport() {
     console.log("Time is Up!")
 }
 function Countdown() {
-var timeLeft = 5;
-var timeInterval = setInterval(function () {
+    introEl.style.display = "none";
+    startEl.style.display = "none";
+    var timeLeft = 5;
+    
+    q1El.style.display = "block";
+    
+    var timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
     if (timeLeft > 1) {
       // Set the `textContent` of `timerEl` to show the remaining seconds
@@ -38,5 +49,7 @@ var timeInterval = setInterval(function () {
 }
 
 startEl.addEventListener("click", function(){
+    
     Countdown();
+    
 });

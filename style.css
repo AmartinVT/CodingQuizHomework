@@ -45,7 +45,6 @@
 }
 
 ul {
-    /* display: none; */
     list-style-type: none;
     margin: 0;
     max-width: 200px;
@@ -68,6 +67,7 @@ ul li {
 }
 
 #Q1, #Q2, #Q3, #Q4, #Q5 {
+    display: none;
     border: black solid 5px;
     border-radius: 10px;
     margin-left: 25%;
