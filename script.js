@@ -1,8 +1,10 @@
 var startEl = document.querySelector("#Start");
+var reloadEl = document.querySelector("#Reload");
 var timerEl = document.querySelector("#Countdown");
 var introEl = document.querySelector("#Intro");
 var gameOverEl = document.querySelector("#GameOver");
 var yourScoreEl = document.querySelector("#YourScore");
+var hiScoreEl = document.getElementById('HiScores');
 
 // Sets elements containing questions and answers to variables
 var q1El = document.querySelector("#Q1");
@@ -45,12 +47,26 @@ let score = 0; //Initialize score to 0
 
 function startQuiz() {console.log("Quiz Initiated")}; //Console message for quiz starting via button press
 
+function highScores() {
+  introEl.style.display = "none";
+  startEl.style.display = "none";
+  q1El.style.display = "none";
+  q2El.style.display = "none";
+  q3El.style.display = "none";
+  q4El.style.display = "none";
+  q5El.style.display = "none";
+  gameOverEl.style.display = "none";
+  yourScoreEl.style.display = "none";
+  reloadEl.style.display = "block";
+}
+
 // Quiz logic
 function Countdown() {
     
     // Initialize program
     introEl.style.display = "none"; //Hide intro message
     startEl.style.display = "none"; //Hide start button
+
     q1El.style.display = "block"; //Show Q1 element
     var timeLeft = 100; //Initialize quiz time to X seconds
 
@@ -212,6 +228,12 @@ function Countdown() {
       yourScoreEl.innerHTML = "Final Score: " + score; //Sets the HTML id equal to the score vaiable
       yourScoreEl.style.display = "block"; //Shows the score element
       gameOverEl.style.display = "block"; //Shows the game over element
+      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
+      ScoreRecord.push(score); //Adds new score to the local storage of high scores
+      var Init = window.prompt("Enter your initials: ");
+      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
+      clearInterval(timeInterval);
+      reloadEl.style.display = "block";
     });
 
     //Wrong Answer
@@ -222,6 +244,12 @@ function Countdown() {
       yourScoreEl.innerHTML = "Final Score: " + score;
       yourScoreEl.style.display = "block";
       gameOverEl.style.display = "block";
+      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
+      ScoreRecord.push(score); //Adds new score to the local storage of high scores
+      var Init = window.prompt("Enter your initials: ");
+      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
+      clearInterval(timeInterval);
+      reloadEl.style.display = "block";
     });
 
     //Wrong Answer
@@ -232,6 +260,12 @@ function Countdown() {
       yourScoreEl.innerHTML = "Final Score: " + score;
       yourScoreEl.style.display = "block";
       gameOverEl.style.display = "block";
+      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
+      ScoreRecord.push(score); //Adds new score to the local storage of high scores
+      var Init = window.prompt("Enter your initials: ");
+      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
+      clearInterval(timeInterval);
+      reloadEl.style.display = "block";
     });
 
     //Correct Answer
@@ -242,6 +276,12 @@ function Countdown() {
       yourScoreEl.style.display = "block";
       yourScoreEl.innerHTML = "Final Score: " + score;
       gameOverEl.style.display = "block";
+      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
+      var Init = window.prompt("Enter your initials: ");
+      ScoreRecord.push(score); //Adds new score to the local storage of high scores
+      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
+      clearInterval(timeInterval);
+      reloadEl.style.display = "block";
     });
 
 
@@ -272,4 +312,16 @@ function Countdown() {
 // Initializes the program
 startEl.addEventListener("click", function() {  
   Countdown(); //Starts the quiz using the Countdown() function on button press
+});
+
+// Closes the quiz & opens high scores
+hiScoreEl.addEventListener("click", function() {  
+  highScores(); //Opens the high scores
+});
+
+// Reload the quiz
+function Reload() {location.reload()};
+
+reloadEl.addEventListener("click", function(){
+  Reload();
 });
