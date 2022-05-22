@@ -1,6 +1,8 @@
 var startEl = document.querySelector("#Start");
 var timerEl = document.querySelector("#Countdown");
 var introEl = document.querySelector("#Intro");
+var gameOverEl = document.querySelector("#GameOver");
+var yourScoreEl = document.querySelector("#YourScore");
 
 // Sets elements containing questions and answers to variables
 var q1El = document.querySelector("#Q1");
@@ -61,7 +63,7 @@ function Countdown() {
       consoleWrong(); //Logs wrong answer message to console
       timeLeft = timeLeft - timeLost; //Removes timeLost seconds from timer
       if (score>0) { //Decrements score if score is greater than 0
-        score = score--;
+        score--;
       }
       q1El.style.display = "none"; //Hides the Q1 element
       q2El.style.display = "block"; //Shows the Q2 element
@@ -72,7 +74,7 @@ function Countdown() {
       consoleWrong();
       timeLeft = timeLeft - timeLost;
       if (score>0) {
-        score = score--;
+        score--;
       }
       q1El.style.display = "none";
       q2El.style.display = "block";
@@ -83,7 +85,7 @@ function Countdown() {
       consoleWrong();
       timeLeft = timeLeft - timeLost;
       if (score>0) {
-        score = score--;
+        score--;
       }
       q1El.style.display = "none";
       q2El.style.display = "block";
@@ -92,7 +94,7 @@ function Countdown() {
     //Correct Answer
     Q1correctEl.addEventListener("click", () => {
       consoleCorrect();
-      score = score++;
+      score++;
       q1El.style.display = "none";
       q2El.style.display = "block";
     });
@@ -106,7 +108,7 @@ function Countdown() {
       consoleWrong(); //Logs wrong answer message to console
       timeLeft = timeLeft - timeLost; //Removes timeLost seconds from timer
       if (score>0) { //Decrements score if score is greater than 0
-        score = score--;
+        score--;
       }
       q2El.style.display = "none"; //Hides the Q2 element
       q3El.style.display = "block"; //Shows the Q3 element
@@ -117,7 +119,7 @@ function Countdown() {
       consoleWrong();
       timeLeft = timeLeft - timeLost;
       if (score>0) {
-        score = score--;
+        score--;
       }
       q2El.style.display = "none";
       q3El.style.display = "block";
@@ -128,7 +130,7 @@ function Countdown() {
       consoleWrong();
       timeLeft = timeLeft - timeLost;
       if (score>0) {
-        score = score--;
+        score--;
       }
       q2El.style.display = "none";
       q3El.style.display = "block";
@@ -137,22 +139,157 @@ function Countdown() {
     //Correct Answer
     Q2correctEl.addEventListener("click", () => {
       consoleCorrect();
-      score = score++;
+      score++;
       q2El.style.display = "none";
       q3El.style.display = "block";
     });
 
 
 
+    //Question #3 Logic
+
+    //Wrong Answer
+    Q3wrong1El.addEventListener("click", () => {
+      consoleWrong(); //Logs wrong answer message to console
+      timeLeft = timeLeft - timeLost; //Removes timeLost seconds from timer
+      if (score>0) { //Decrements score if score is greater than 0
+        score = score--;
+      }
+      q3El.style.display = "none"; //Hides the Q2 element
+      q4El.style.display = "block"; //Shows the Q3 element
+    });
+
+    //Wrong Answer
+    Q3wrong2El.addEventListener("click", () => {
+      consoleWrong();
+      timeLeft = timeLeft - timeLost;
+      if (score>0) {
+        score--;
+      }
+      q3El.style.display = "none";
+      q4El.style.display = "block";
+    });
+
+    //Wrong Answer
+    Q3wrong3El.addEventListener("click", () => {
+      consoleWrong();
+      timeLeft = timeLeft - timeLost;
+      if (score>0) {
+        score--;
+      }
+      q3El.style.display = "none";
+      q4El.style.display = "block";
+    });
+
+    //Correct Answer
+    Q3correctEl.addEventListener("click", () => {
+      consoleCorrect();
+      score++;
+      q3El.style.display = "none";
+      q4El.style.display = "block";
+    });
 
 
 
+    //Question #4 Logic
+
+    //Wrong Answer
+    Q4wrong1El.addEventListener("click", () => {
+      consoleWrong(); //Logs wrong answer message to console
+      timeLeft = timeLeft - timeLost; //Removes timeLost seconds from timer
+      if (score>0) { //Decrements score if score is greater than 0
+        score--;
+      }
+      q4El.style.display = "none"; //Hides the Q2 element
+      q5El.style.display = "block"; //Shows the Q3 element
+    });
+
+    //Wrong Answer
+    Q4wrong2El.addEventListener("click", () => {
+      consoleWrong();
+      timeLeft = timeLeft - timeLost;
+      if (score>0) {
+        score--;
+      }
+      q4El.style.display = "none";
+      q5El.style.display = "block";
+    });
+
+    //Wrong Answer
+    Q4wrong3El.addEventListener("click", () => {
+      consoleWrong();
+      timeLeft = timeLeft - timeLost;
+      if (score>0) {
+        score--;
+      }
+      q4El.style.display = "none";
+      q5El.style.display = "block";
+    });
+
+    //Correct Answer
+    Q4correctEl.addEventListener("click", () => {
+      consoleCorrect();
+      score++;
+      q4El.style.display = "none";
+      q5El.style.display = "block";
+    });
 
 
 
+    //Question #5 Logic
+
+    //Wrong Answer
+    Q5wrong1El.addEventListener("click", () => {
+      consoleWrong(); //Logs wrong answer message to console
+      timeLeft = timeLeft - timeLost; //Removes timeLost seconds from timer
+      if (score>0) { //Decrements score if score is greater than 0
+        score--;
+      }
+      q5El.style.display = "none"; //Hides the Q5 element
+      yourScoreEl.innerHTML = score; //Sets the HTML id equal to the score vaiable
+      yourScoreEl.style.display = "block"; //Shows the score element
+      gameOverEl.style.display = "block"; //Shows the game over element
+    });
+
+    //Wrong Answer
+    Q5wrong2El.addEventListener("click", () => {
+      consoleWrong();
+      timeLeft = timeLeft - timeLost;
+      if (score>0) {
+        score--;
+      }
+      q5El.style.display = "none";
+      yourScoreEl.innerHTML = score;
+      yourScoreEl.style.display = "block";
+      gameOverEl.style.display = "block";
+    });
+
+    //Wrong Answer
+    Q5wrong3El.addEventListener("click", () => {
+      consoleWrong();
+      timeLeft = timeLeft - timeLost;
+      if (score>0) {
+        score--;
+      }
+      q5El.style.display = "none";
+      yourScoreEl.innerHTML = score;
+      yourScoreEl.style.display = "block";
+      gameOverEl.style.display = "block";
+    });
+
+    //Correct Answer
+    Q5correctEl.addEventListener("click", () => {
+      consoleCorrect();
+      score = score++;
+      q5El.style.display = "none";
+      yourScoreEl.innerHTML = score;
+      yourScoreEl.style.display = "block";
+      gameOverEl.style.display = "block";
+    });
 
 
-    
+
+    // Time interval logic for countdown
     var timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
     if (timeLeft > 1) {
@@ -175,6 +312,7 @@ function Countdown() {
   }, 1000);
 }
 
+// Initializes the program
 startEl.addEventListener("click", function() {  
   Countdown(); //Starts the quiz using the Countdown() function on button press
 });
