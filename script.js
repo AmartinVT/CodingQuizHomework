@@ -5,6 +5,7 @@ var introEl = document.querySelector("#Intro");
 var gameOverEl = document.querySelector("#GameOver");
 var yourScoreEl = document.querySelector("#YourScore");
 var hiScoreEl = document.getElementById('HiScores');
+var listOfScores = document.getElementById("ListOfScores");
 
 // Sets elements containing questions and answers to variables
 var q1El = document.querySelector("#Q1");
@@ -45,6 +46,11 @@ var Q5correctEl = document.getElementById('Q5correct');
 
 let score = 0; //Initialize score to 0
 
+let scoreObj = {
+  objInit: "",
+  objScore: ""
+}
+
 function startQuiz() {console.log("Quiz Initiated")}; //Console message for quiz starting via button press
 
 function highScores() {
@@ -58,6 +64,15 @@ function highScores() {
   gameOverEl.style.display = "none";
   yourScoreEl.style.display = "none";
   reloadEl.style.display = "block";
+  
+  scoreArray = parse(localStorage.getItem('Score'));
+  initArray = localStorage.getItem('Init');
+  
+  scoreArray.forEach((item)=>{
+    let li = document.createElement("li");
+    li.innerText = item;
+    listOfScores.appendChild(li);
+  })
 }
 
 // Quiz logic
@@ -68,7 +83,7 @@ function Countdown() {
     startEl.style.display = "none"; //Hide start button
 
     q1El.style.display = "block"; //Show Q1 element
-    var timeLeft = 100; //Initialize quiz time to X seconds
+    var timeLeft = 50; //Initialize quiz time to X seconds
 
     var timeLost = 5; //Variable for seconds lost per wrong answer
     function consoleWrong() {console.log("Wrong Answer!!!")}; //"Wrong answer" console log
@@ -283,8 +298,6 @@ function Countdown() {
       clearInterval(timeInterval);
       reloadEl.style.display = "block";
     });
-
-
 
     // Time interval logic for countdown
     var timeInterval = setInterval(function () {

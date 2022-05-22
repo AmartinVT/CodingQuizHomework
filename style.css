@@ -1,3 +1,8 @@
+a, a:hover, a:active, a:focus {
+    text-decoration: none;
+    color: white;
+}
+
 #Intro {
     display: flex;
     text-align: center;
@@ -21,15 +26,28 @@
     font-size: 30px;
     background-color: lightgrey;
     border:  black solid 5px;
+    border-radius: 10px;
+}
+
+#ListOfScores {
+    padding: 0px 0px 0px 0px;
 }
 
 #HiScores {
     display: flex;
-    font-size: 24px;
-    text-align: left;
+    padding: 2px 2px 2px 2px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgrey;
+    border: black solid 5px;
+    border-radius: 10px;
+    display: flex;
+    font-size: 30px;
     position: absolute;
     top: 0px;
     left: 0px;
+    width: fit-content;
+    margin-bottom: 5px;
 }
 
 #Countdown {
@@ -41,6 +59,7 @@
     right: 0px;
     font-size: 24px;
     font-weight: bolder;
+    margin-bottom: 5px;
 }
 
 ul {
@@ -68,6 +87,7 @@ ul li {
 }
 
 #Q1, #Q2, #Q3, #Q4, #Q5 {
+    text-decoration: none;
     display: none;
     border: black solid 5px;
     border-radius: 10px;
@@ -117,8 +137,6 @@ ul li {
     margin-top: 20%;
     font-size: 30px;
     font-weight: bolder;
-
-
 }
 
 h1 {
@@ -135,4 +153,5 @@ h1 {
     font-size: 30px;
     background-color: lightgrey;
     border:  black solid 5px;
+    border-radius: 10px;
 }
