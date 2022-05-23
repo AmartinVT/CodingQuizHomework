@@ -1,3 +1,4 @@
+// Creates variables from HTML elements
 var startEl = document.querySelector("#Start");
 var reloadEl = document.querySelector("#Reload");
 var timerEl = document.querySelector("#Countdown");
@@ -46,6 +47,7 @@ var Q5correctEl = document.getElementById('Q5correct');
 
 let score = 0; //Initialize score to 0
 
+// Initialize scoreObj to hold 2 values
 let scoreObj = {
   objInit: null,
   objScore: null
@@ -235,12 +237,13 @@ function Countdown() {
       yourScoreEl.innerHTML = "Final Score: " + score; //Sets the HTML id equal to the score vaiable
       yourScoreEl.style.display = "block"; //Shows the score element
       gameOverEl.style.display = "block"; //Shows the game over element
-      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
-      ScoreRecord.push(score); //Adds new score to the local storage of high scores
+      var ScoreRecord = [localStorage.getItem("High-Scores")] || []; //Grabs local storage of high scores
       var Init = window.prompt("Enter your initials: ");
-      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
       clearInterval(timeInterval);
       reloadEl.style.display = "block";
+      var scoreObj = JSON.stringify({"Initials":Init,"Score":score}); //Creates a string of initials and scores
+      ScoreRecord.push(scoreObj); //Adds new score to the local storage of high scores
+      localStorage.setItem("High-Scores",ScoreRecord); //Redefines local storage to include new score
     });
 
     //Wrong Answer
@@ -251,12 +254,13 @@ function Countdown() {
       yourScoreEl.innerHTML = "Final Score: " + score;
       yourScoreEl.style.display = "block";
       gameOverEl.style.display = "block";
-      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
-      ScoreRecord.push(score); //Adds new score to the local storage of high scores
+      var ScoreRecord = [localStorage.getItem("High-Scores")] || []; //Grabs local storage of high scores
       var Init = window.prompt("Enter your initials: ");
-      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
       clearInterval(timeInterval);
       reloadEl.style.display = "block";
+      var scoreObj = JSON.stringify({"Initials":Init,"Score":score}); //Creates a string of initials and scores
+      ScoreRecord.push(scoreObj); //Adds new score to the local storage of high scores
+      localStorage.setItem("High-Scores",ScoreRecord); //Redefines local storage to include new score
     });
 
     //Wrong Answer
@@ -267,12 +271,13 @@ function Countdown() {
       yourScoreEl.innerHTML = "Final Score: " + score;
       yourScoreEl.style.display = "block";
       gameOverEl.style.display = "block";
-      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
-      ScoreRecord.push(score); //Adds new score to the local storage of high scores
+      var ScoreRecord = [localStorage.getItem("High-Scores")] || []; //Grabs local storage of high scores
       var Init = window.prompt("Enter your initials: ");
-      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
       clearInterval(timeInterval);
       reloadEl.style.display = "block";
+      var scoreObj = JSON.stringify({"Initials":Init,"Score":score}); //Creates a string of initials and scores
+      ScoreRecord.push(scoreObj); //Adds new score to the local storage of high scores
+      localStorage.setItem("High-Scores",ScoreRecord); //Redefines local storage to include new score
     });
 
     //Correct Answer
@@ -287,7 +292,7 @@ function Countdown() {
       var Init = window.prompt("Enter your initials: ");
       clearInterval(timeInterval);
       reloadEl.style.display = "block";
-      var scoreObj = JSON.stringify({"Initials":Init,"Score":score});
+      var scoreObj = JSON.stringify({"Initials":Init,"Score":score}); //Creates a string of initials and scores
       ScoreRecord.push(scoreObj); //Adds new score to the local storage of high scores
       localStorage.setItem("High-Scores",ScoreRecord); //Redefines local storage to include new score
     });
