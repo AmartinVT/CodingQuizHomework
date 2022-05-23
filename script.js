@@ -47,8 +47,8 @@ var Q5correctEl = document.getElementById('Q5correct');
 let score = 0; //Initialize score to 0
 
 let scoreObj = {
-  objInit: "",
-  objScore: ""
+  objInit: null,
+  objScore: null
 }
 
 function startQuiz() {console.log("Quiz Initiated")}; //Console message for quiz starting via button press
@@ -63,16 +63,8 @@ function highScores() {
   q5El.style.display = "none";
   gameOverEl.style.display = "none";
   yourScoreEl.style.display = "none";
+  hiScoreEl.innerHTML = (localStorage.getItem("High-Scores"));
   reloadEl.style.display = "block";
-  
-  scoreArray = parse(localStorage.getItem('Score'));
-  initArray = localStorage.getItem('Init');
-  
-  scoreArray.forEach((item)=>{
-    let li = document.createElement("li");
-    li.innerText = item;
-    listOfScores.appendChild(li);
-  })
 }
 
 // Quiz logic
@@ -291,12 +283,13 @@ function Countdown() {
       yourScoreEl.style.display = "block";
       yourScoreEl.innerHTML = "Final Score: " + score;
       gameOverEl.style.display = "block";
-      var ScoreRecord = [localStorage.getItem("Score")] || []; //Grabs local storage of high scores
+      var ScoreRecord = [localStorage.getItem("High-Scores")] || []; //Grabs local storage of high scores
       var Init = window.prompt("Enter your initials: ");
-      ScoreRecord.push(score); //Adds new score to the local storage of high scores
-      localStorage.setItem(Init, ScoreRecord); //Redefines local storage to include new score
       clearInterval(timeInterval);
       reloadEl.style.display = "block";
+      var scoreObj = JSON.stringify({"Initials":Init,"Score":score});
+      ScoreRecord.push(scoreObj); //Adds new score to the local storage of high scores
+      localStorage.setItem("High-Scores",ScoreRecord); //Redefines local storage to include new score
     });
 
     // Time interval logic for countdown
