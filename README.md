@@ -1,6 +1,16 @@
+Dev Info
+---
 Name: Adam Martin
+
 HW Title: Coding Quiz (Week 4 Assignment)
+
 Submit Date: 5/22/22
+
+Links
+---
+GitPage: https://amartinvt.github.io/CodingQuizHomework/#
+
+GitRepo: https://github.com/AmartinVT/CodingQuizHomework
 
 Description of Functionality
 ---
